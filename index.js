@@ -1,10 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 
-window.onscroll = function () {
-  stickyNav();
-  stickyHeading1();
-  stickyHeading2();
-};
+// All variables
 
 var navbar = document.getElementById("navbar");
 var dropDown = document.querySelector(".dropdown");
@@ -16,6 +12,8 @@ var sticky_heading1 = heading1.offsetTop;
 var sticky_heading2 = heading2.offsetTop;
 var backgroundVideo = document.querySelector("video");
 
+// Dropdown
+
 bar.addEventListener("click", dropdown);
 
 function dropdown() {
@@ -23,6 +21,13 @@ function dropdown() {
   dropDown.classList.toggle("active");
   bar.classList.toggle("active");
 }
+window.onscroll = function () {
+  stickyNav();
+  stickyHeading1();
+  stickyHeading2();
+};
+
+// Sticky Navbar and section
 
 function stickyNav() {
   if (window.pageYOffset >= sticky_Nav) {
@@ -47,6 +52,8 @@ function stickyHeading2() {
     heading2.classList.remove("sticky");
   }
 }
+
+// Gsap animation
 
 gsap
   .timeline()
