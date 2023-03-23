@@ -104,9 +104,19 @@ body {
 #navbar.active {
   position: fixed;
   top: 0;
+  background: transparent;
   width: 100%;
   z-index: 999;
-  background: transparent;
+  .bar {
+    .line {
+      background: #fff;
+    }
+  }
+  #logo {
+    svg {
+      color: white;
+    }
+  }
 }
 
 // ============ Dropdown style ==============

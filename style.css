@@ -71,9 +71,15 @@ body {
 #navbar.active {
   position: fixed;
   top: 0;
+  background: transparent;
   width: 100%;
   z-index: 999;
-  background: transparent;
+}
+#navbar.active .bar .line {
+  background: #fff;
+}
+#navbar.active #logo svg {
+  color: white;
 }
 
 .dropdown {
