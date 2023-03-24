@@ -13,6 +13,9 @@ var sticky_heading2 = heading2.offsetTop;
 var backgroundVideo = document.querySelector("video");
 
 // Dropdown
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
 
 bar.addEventListener("click", dropdown);
 
@@ -57,27 +60,31 @@ function stickyHeading2() {
 
 gsap
   .timeline()
-  .to(".letter1", { opacity: 1, delay: 0.5 })
+  .from(".square", { x: -10, stagger: 0.1, duration: 0.3 })
+  .to(".loader", { display: "none" });
+
+gsap
+  .timeline()
+  .to(".letter1", { opacity: 1, delay: 1 })
   .to(".animated_line1", { opacity: 1, duration: 0 })
   .to(".animated_line1", { width: "100%" })
   .to(".letter2", { opacity: 1 })
   .to(".banner_title h2", { opacity: 1 })
   .fromTo(".banner_background", { opacity: 0 }, { opacity: 1 });
 
-let tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#navbar",
-    scrub: 2,
-    start: "top 90%",
-    end: "2800px",
-    // markers: true,
-    toggleActions: "restart none none none",
-  },
-});
-
 ScrollTrigger.matchMedia({
   "(min-width: 992px)": function () {
-    tl.to(".letter1, .letter2, .banner_title", { opacity: 0 })
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#navbar",
+          scrub: 2,
+          start: "top 90%",
+          end: "2500px",
+          toggleActions: "restart none none none",
+        },
+      })
+      .to(".letter1, .letter2, .banner_title", { opacity: 0 })
       .to(".line_wrapper", { width: "25%" })
       .to(".animated_line1", { backgroundColor: "#8343D8", duration: 1 })
       .to(".animated_line1", {
@@ -87,22 +94,26 @@ ScrollTrigger.matchMedia({
         duration: 0,
       })
       .to(".letter1, .letter2, .banner_title", { display: "none", duration: 0 })
+      .to(".banner_content .justify_between", { margin: 0, duration: 0 }, "<")
       .to(".line_wrapper", { width: "900px", duration: 1 })
-      .to(".animated_line1", { height: 400, border: 20, duration: 2 }, "<")
+      .to(".animated_line1", { height: 300, border: 20, duration: 2 }, "<")
       .to(".line_wrapper", {
-        width: 400,
+        width: 360,
         backgroundImage:
           "linear-gradient(45deg, rgba(149,69,251,1) 0%, rgba(235,13,186,1) 100%)",
         duration: 2,
-        delay: 2,
+        delay: 1,
       })
-      .to(".animated_line1", { borderWidth: 0, duration: 2 }, "<")
+      .to(".animated_line1", { height: 360, borderWidth: 0, duration: 2 }, "<")
+      .to(".line_wrapper", {
+        backgroundImage:
+          "linear-gradient(45deg, rgba(235,13,186,1) 0%, rgba(235,13,186,1) 100%)",
+      })
       .to(".line_wrapper", {
         width: 20,
         backgroundImage:
           "linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%)",
         duration: 2,
-        delay: 2,
       })
       .to(".animated_line2", { opacity: 1, delay: 0.5 })
       .to(".animated_line2", { width: 400 })
@@ -111,8 +122,19 @@ ScrollTrigger.matchMedia({
       .to(".animated_line2", { width: 0, delay: 0.5 })
       .to(".animated_line2", { opacity: 0 }, ">");
   },
-  "(min-width: 481px) and (max-width: 991px)": function () {
-    tl.to(".letter1, .letter2, .banner_title", { opacity: 0 })
+  "(min-width: 541px) and (max-width: 991px)": function () {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#navbar",
+          scrub: 2,
+          start: "top 90%",
+          end: "3200px",
+          // markers: true,
+          toggleActions: "restart none none none",
+        },
+      })
+      .to(".letter1, .letter2, .banner_title", { opacity: 0 })
       .to(".line_wrapper", { width: "50%" })
       .to(".animated_line1", { backgroundColor: "#8343D8", duration: 1 })
       .to(".animated_line1", {
@@ -122,7 +144,8 @@ ScrollTrigger.matchMedia({
         duration: 0,
       })
       .to(".letter1, .letter2, .banner_title", { display: "none", duration: 0 })
-      .to(".line_wrapper", { width: "100%", duration: 1 })
+      .to(".banner_content .justify_between", { margin: 0, duration: 0 }, "<")
+      .to(".line_wrapper", { width: "85%", duration: 1 })
       .to(".animated_line1", { height: 250, border: 10, duration: 1 }, "<")
       .to(".line_wrapper", {
         width: 350,
@@ -133,22 +156,36 @@ ScrollTrigger.matchMedia({
       })
       .to(".animated_line1", { height: 350, borderWidth: 0, duration: 2 }, "<")
       .to(".line_wrapper", {
+        backgroundImage:
+          "linear-gradient(45deg, rgba(235,13,186,1) 0%, rgba(235,13,186,1) 100%)",
+      })
+      .to(".line_wrapper", {
         width: 10,
         backgroundImage:
           "linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%)",
         duration: 2,
-        delay: 1,
       })
-      .to(".animated_line1", { height: 250, duration: 2 }, "<")
+      .to(".animated_line1", { height: 200, duration: 2 }, "<")
       .to(".animated_line2", { opacity: 1, delay: 0.5 })
-      .to(".animated_line2", { width: 250 })
+      .to(".animated_line2", { width: 200 })
       .to(".animated_line1", { height: 0, delay: 0.5 })
       .to(".animated_line1", { opacity: 0 }, ">")
       .to(".animated_line2", { width: 0, delay: 0.5 })
       .to(".animated_line2", { opacity: 0 }, ">");
   },
-  "(max-width: 480px)": function () {
-    tl.to(".letter1, .letter2, .banner_title", { opacity: 0 })
+  "(max-width: 540px)": function () {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#navbar",
+          scrub: 2,
+          start: "top 90%",
+          end: "2700px",
+          // markers: true,
+          toggleActions: "restart none none none",
+        },
+      })
+      .to(".letter1, .letter2, .banner_title", { opacity: 0 })
       .to(".line_wrapper", { width: "50%" })
       .to(".animated_line1", { backgroundColor: "#8343D8", duration: 1 })
       .to(".animated_line1", {
@@ -158,6 +195,7 @@ ScrollTrigger.matchMedia({
         duration: 0,
       })
       .to(".letter1, .letter2, .banner_title", { display: "none", duration: 0 })
+      .to(".banner_content .justify_between", { margin: 0, duration: 0 }, "<")
       .to(".line_wrapper", { width: "100%", duration: 1 })
       .to(".animated_line1", { height: 200, border: 10, duration: 1 }, "<")
       .to(".line_wrapper", {
@@ -169,13 +207,16 @@ ScrollTrigger.matchMedia({
       })
       .to(".animated_line1", { borderWidth: 0, duration: 2 }, "<")
       .to(".line_wrapper", {
+        backgroundImage:
+          "linear-gradient(45deg, rgba(235,13,186,1) 0%, rgba(235,13,186,1) 100%)",
+      })
+      .to(".line_wrapper", {
         width: 10,
         backgroundImage:
           "linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%)",
         duration: 2,
-        delay: 1,
       })
-      .to(".animated_line1", { height: 200, duration: 2 }, "<")
+      .to(".animated_line1", { height: 180, duration: 2 }, "<")
       .to(".animated_line2", { opacity: 1, delay: 0.5 })
       .to(".animated_line2", { width: 200 })
       .to(".animated_line1", { height: 0, delay: 0.5 })
