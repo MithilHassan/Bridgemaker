@@ -116,7 +116,6 @@ body {
   padding: 0 20px;
   z-index: 900;
   min-height: 800px;
-  opacity: 0;
 }
 .dropdown .container {
   display: flex;
@@ -166,8 +165,8 @@ body {
 }
 
 .dropdown.active {
+  transition: translate 0.3s ease-out;
   translate: 0;
-  opacity: 1;
 }
 
 #banner {
