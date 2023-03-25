@@ -207,7 +207,7 @@ body {
 }
 #banner .banner_content .justify_between .line_wrapper .animated_line1 {
   background-color: #ffffff;
-  height: 20px;
+  height: 18px;
   width: 0;
   opacity: 0;
 }
@@ -217,7 +217,7 @@ body {
   left: 50%;
   translate: -50% -50%;
   background-color: #ffffff;
-  height: 20px;
+  height: 18px;
   opacity: 0;
 }
 #banner .banner_content .banner_title {
@@ -289,6 +289,7 @@ section {
   width: 50%;
   text-align: left;
   align-self: flex-end;
+  max-width: 880px;
 }
 
 .section_3 {
@@ -300,6 +301,8 @@ section {
 }
 .section_3 .title {
   margin: 0 auto;
+  height: -moz-max-content;
+  height: max-content;
 }
 .section_3 .column1,
 .section_3 .column2 {
@@ -318,10 +321,11 @@ section {
 }
 .section_3 .column1 img {
   width: 100%;
-  max-width: 500px;
+  max-width: 560px;
 }
 .section_3 .column2 {
-  justify-content: flex-end;
+  justify-content: flex-start;
+  grid-row: span 2;
 }
 .section_3 .column2 img {
   height: calc(200px + 15vw);
@@ -608,6 +612,9 @@ footer .footer_bottom ul li a {
   .section_3 .column2 h2 {
     font-size: 2.25rem;
     padding: 40px 20px;
+  }
+  .section_3 .column2 {
+    justify-content: flex-end;
   }
   .section_3 .column2 h2 {
     margin-left: 0;

@@ -233,14 +233,14 @@ body {
         margin: 0 auto;
         .animated_line1 {
           background-color: $bg_light;
-          height: 20px;
+          height: 18px;
           width: 0;
           opacity: 0;
         }
         .animated_line2 {
           @include position_center;
           background-color: $bg_light;
-          height: 20px;
+          height: 18px;
           opacity: 0;
         }
       }
@@ -314,6 +314,7 @@ section {
     width: 50%;
     text-align: left;
     align-self: flex-end;
+    max-width: 880px;
   }
 }
 
@@ -327,6 +328,7 @@ section {
   margin-bottom: 500px;
   .title {
     margin: 0 auto;
+    height: max-content;
   }
   .column1,
   .column2 {
@@ -343,11 +345,12 @@ section {
     order: 1;
     img {
       width: 100%;
-      max-width: 500px;
+      max-width: 560px;
     }
   }
   .column2 {
-    justify-content: flex-end;
+    justify-content: flex-start;
+    grid-row: span 2;
     img {
       height: calc(200px + 15vw);
       width: 100%;
@@ -643,6 +646,7 @@ footer {
       }
     }
     .column2 {
+      justify-content: flex-end;
       h2 {
         margin-left: 0;
         padding-left: 0;
